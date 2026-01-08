@@ -99,14 +99,25 @@ const skills = [
 
 const experience = [
   {
-    company: 'MOUTS TI',
+    company: "Fiserv (LATAM)",
     role: 'Desenvolvedor Full Stack Sênior',
-    period: '2022.1 – Atual',
+    period: '2024.1 – Atual',
     highlights: [
-      'Projetos críticos para Engie e Sanegeo com foco em confiabilidade',
-      'Micro front-ends com React Single SPA e back-end NodeJS',
-      'CI/CD em Bamboo e design systems privados (Nexus/NPM)',
-      'React Native para apps online/offline e formulários dinâmicos',
+      'Desenvolvimento de interfaces front-end em AngularJS para plataforma de chat e gerenciamento baseada em IA',
+      'Desenvolvimento de serviços back-end em Java Spring Boot para criação de API seguindo a arquitetura BFF (Backend for Frontend)',
+      'Desenvolvimento de serviços back-end em Python utilizando Azure Functions para criação de APIs de IA baseadas em LLMs e processamento vetorial',
+      'Contribuição para soluções escaláveis e cloud-native utilizando Microsoft Azure',
+    ],
+  },
+  {
+    company: 'Coterie (Canadá)',
+    role: 'Desenvolvedor Full Stack Sênior',
+    period: '2022.1 – 2024.1',
+    highlights: [
+      'Desenvolvimento e manutenção de aplicações front-end em ReactJScom foco em performance e escalabilidade',
+      'Definição e implementação de arquitetura back-end utilizando NestJS, incluindo autenticação (Auth0), WebSockets (Socket.IO) e testes unitários com Jest',
+      'Gestão da infraestrutura em AWS para ambientes de desenvolvimento e produção, incluindo DynamoDB e CloudSearch',
+      'Integração de soluções de IA (ChatGPT) para aprimoramento de mecanismos de busca e recomendações de locais esportivos com base no feedback dos usuários',
     ],
   },
   {
