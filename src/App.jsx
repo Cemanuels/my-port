@@ -35,6 +35,7 @@ const codingSkills = [
   { name: 'React Native', level: 'avançado', icon: Code },
   { name: 'Node.js/NestJS', level: 'avançado', icon: Code },
   { name: 'Python', level: 'intermediário', icon: Code },
+  { name: 'Java', level: 'intermediário', icon: Code,}
 ]
 
 const professionalSkills = [
