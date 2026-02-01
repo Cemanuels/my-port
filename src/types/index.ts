@@ -2,6 +2,9 @@ import type { LucideIcon } from 'lucide-react'
 
 export type SkillLevel = 'iniciante' | 'intermediário' | 'avançado'
 
+/** Chave do nível de skill usada nos JSONs de i18n (beginner | intermediate | advanced) */
+export type SkillLevelKey = 'beginner' | 'intermediate' | 'advanced'
+
 export interface SkillWithLevel {
   name: string
   level: SkillLevel

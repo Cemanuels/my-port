@@ -20,7 +20,25 @@
   --level-advanced-bg: rgba(16, 185, 129, 0.15);
 }
 
+/* ===== PROPERTIES ===== */
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;  
+  inherits: false;
+}
+
 /* ===== ANIMATIONS ===== */
+
+@keyframes border-angle-rotate {
+  from {
+    --border-angle: 0deg;
+  }
+  to {
+    --border-angle: 360deg;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -181,6 +199,12 @@ body.mobile-preview-active::after {
   justify-content: space-between;
   align-items: center;
   gap: 32px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .navbar-logo {
@@ -351,6 +375,7 @@ body.mobile-preview-active::after {
 }
 
 .button.secondary {
+  --border-angle: 0deg;
   background: transparent;
   color: var(--text-primary);
   border-color: var(--primary-cyan);
@@ -358,10 +383,27 @@ body.mobile-preview-active::after {
 
 .button.secondary:hover,
 .button.secondary:focus {
-  background: rgba(0, 217, 255, 0.1);
-  border-color: var(--primary-cyan-bright);
+  background: linear-gradient(var(--bg-dark)) padding-box,
+      conic-gradient(
+          from var(--border-angle),
+          hsl(212, 91%, 67%) 45deg, 
+          var(--primary-cyan-bright) 90deg,
+          hsl(212, 91%, 67%) 135deg,
+          var(--primary-cyan) 180deg,
+          hsl(212, 91%, 67%) 225deg,
+          var(--primary-cyan-bright) 270deg,
+          hsl(212, 91%, 67%) 315deg,
+          var(--primary-cyan) 360deg
+        ) border-box;
+  border-color: transparent;
   color: var(--primary-cyan);
   outline: none;
+  animation: border-angle-rotate 2s linear infinite;
+}
+
+.button.secondary > * {
+  position: relative;
+  z-index: 1;
 }
 
 .button.secondary:focus-visible {
@@ -400,6 +442,55 @@ body.mobile-preview-active::after {
 .social-link:focus-visible {
   outline: 2px solid var(--primary-cyan);
   outline-offset: 2px;
+}
+
+/* Language switcher (navbar select) */
+.language-switcher {
+  flex-shrink: 0;
+}
+
+.language-switcher-select {
+  min-width: 56px;
+  height: 40px;
+  padding: 8px 12px;
+  padding-right: 28px;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  background: rgba(0, 217, 255, 0.05);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M2 4 L6 8 L10 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+.language-switcher-select:hover,
+.language-switcher-select:focus {
+  border-color: var(--primary-cyan);
+  color: var(--primary-cyan);
+  background-color: rgba(0, 217, 255, 0.1);
+  outline: none;
+}
+
+.language-switcher-select:focus-visible {
+  outline: 2px solid var(--primary-cyan);
+  outline-offset: 2px;
+}
+
+.language-switcher-select option {
+  background: var(--bg-darker);
+  color: var(--text-primary);
+}
+
+.language-switcher-select option:hover,
+.language-switcher-select option:focus,
+.language-switcher-select option:checked {
+  background: var(--bg-dark);
+  color: var(--primary-cyan);
 }
 
 .hero-image {
@@ -647,19 +738,22 @@ body.mobile-preview-active::after {
   transition: all 0.3s ease;
 }
 
-.skill-level-iniciante {
+.skill-level-iniciante,
+.skill-level-beginner {
   background: var(--level-beginner-bg);
   color: var(--level-beginner);
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
-.skill-level-intermediário {
+.skill-level-intermediário,
+.skill-level-intermediate {
   background: var(--level-intermediate-bg);
   color: var(--level-intermediate);
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
-.skill-level-avançado {
+.skill-level-avançado,
+.skill-level-advanced {
   background: var(--level-advanced-bg);
   color: var(--level-advanced);
   border: 1px solid rgba(16, 185, 129, 0.3);
@@ -1193,6 +1287,13 @@ body.mobile-preview-active::after {
     padding: 14px 20px;
     flex-direction: column;
     gap: 16px;
+  }
+
+  .navbar-right {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .navbar-links {

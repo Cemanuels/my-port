@@ -1,0 +1,180 @@
+{
+  "nav": {
+    "logo": "Caio Emanuel",
+    "goToHome": "Ir al inicio",
+    "about": "Sobre",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "education": "Formación",
+    "contact": "Contacto",
+    "ariaNav": "Navegación principal"
+  },
+  "hero": {
+    "greeting": "Hola, soy",
+    "subtitle": "Ingeniero de Software Senior",
+    "description": "Especialista en el ecosistema JavaScript construyendo productos escalables en fintech, e-commerce e IA. Fuerte en arquitecturas cloud-native, micro front-ends y pipelines CI/CD.",
+    "hireMe": "Contrátame",
+    "letsTalk": "Hablemos",
+    "goToContact": "Ir a la sección de contacto",
+    "emailAria": "Enviar correo a Caio Emanuel",
+    "linkedinAria": "LinkedIn de Caio Emanuel",
+    "githubAria": "GitHub de Caio Emanuel",
+    "imageAlt": "Caio Emanuel - Ingeniero de Software Senior"
+  },
+  "about": {
+    "title": "Sobre Mí",
+    "paragraph1": "Con más de 7 años de experiencia en desarrollo full stack y móvil, trabajo en la construcción de aplicaciones escalables en fintech, e-commerce e IA. Especialista en el ecosistema JavaScript, arquitecturas cloud-native, CI/CD y design systems.",
+    "paragraph2": "Mi pasión está en transformar ideas complejas en soluciones elegantes y escalables, siempre priorizando la calidad del código, el rendimiento y la experiencia del usuario.",
+    "statYears": "Años de Experiencia",
+    "statProjects": "Proyectos Entregados",
+    "statTech": "Tecnologías Dominadas"
+  },
+  "skills": {
+    "title": "Mis Habilidades",
+    "codingCategory": "Habilidades de Código",
+    "professionalCategory": "Habilidades Profesionales",
+    "levels": {
+      "beginner": "principiante",
+      "intermediate": "intermedio",
+      "advanced": "avanzado"
+    },
+    "codingSkills": [
+      { "name": "JavaScript", "levelKey": "advanced" },
+      { "name": "TypeScript", "levelKey": "advanced" },
+      { "name": "React/Next.js", "levelKey": "advanced" },
+      { "name": "React Native", "levelKey": "advanced" },
+      { "name": "Node.js/NestJS", "levelKey": "advanced" },
+      { "name": "Python", "levelKey": "intermediate" },
+      { "name": "Java", "levelKey": "intermediate" }
+    ],
+    "professionalSkills": [
+      { "name": "Arquitectura Cloud", "levelKey": "advanced" },
+      { "name": "Micro Front-ends", "levelKey": "advanced" },
+      { "name": "Pipelines CI/CD", "levelKey": "advanced" },
+      { "name": "Design Systems", "levelKey": "advanced" }
+    ],
+    "cards": [
+      {
+        "title": "Lenguajes y Frameworks",
+        "items": "JavaScript · TypeScript · ReactJS · NextJS · React Native · AngularJS · NodeJS · NestJS · Python"
+      },
+      {
+        "title": "Cloud y DevOps",
+        "items": "AWS · Azure · Docker · Kubernetes · OpenShift · CI/CD (GitHub Actions, GitLab CI, Azure DevOps, Bamboo)"
+      },
+      {
+        "title": "Arquitectura y Observabilidad",
+        "items": "Micro front-ends (Single-SPA) · Kafka · RabbitMQ · Prometheus · Grafana · Design Systems"
+      },
+      {
+        "title": "Bases de Datos",
+        "items": "PostgreSQL · MongoDB · DynamoDB · SQL"
+      }
+    ]
+  },
+  "experience": {
+    "title": "Mi Trayectoria",
+    "experienceCategory": "Experiencia",
+    "educationCategory": "Educación",
+    "items": [
+      {
+        "company": "Fiserv (LATAM)",
+        "role": "Desarrollador Full Stack Senior",
+        "period": "2024.1 – Actual",
+        "highlights": [
+          "Desarrollo de interfaces front-end en AngularJS para plataforma de chat y gestión basada en IA",
+          "Desarrollo de servicios back-end en Java Spring Boot para creación de API siguiendo la arquitectura BFF (Backend for Frontend)",
+          "Desarrollo de servicios back-end en Python utilizando Azure Functions para APIs de IA basadas en LLMs y procesamiento vectorial",
+          "Contribución a soluciones escalables y cloud-native utilizando Microsoft Azure"
+        ]
+      },
+      {
+        "company": "Coterie (Canadá)",
+        "role": "Desarrollador Full Stack Senior",
+        "period": "2022.1 – 2024.1",
+        "highlights": [
+          "Desarrollo y mantenimiento de aplicaciones front-end en ReactJS con foco en rendimiento y escalabilidad",
+          "Definición e implementación de arquitectura back-end con NestJS, incluyendo autenticación (Auth0), WebSockets (Socket.IO) y pruebas unitarias con Jest",
+          "Gestión de infraestructura en AWS para entornos de desarrollo y producción, incluyendo DynamoDB y CloudSearch",
+          "Integración de soluciones de IA (ChatGPT) para mejora de búsqueda y recomendaciones de locales deportivos según feedback de usuarios"
+        ]
+      },
+      {
+        "company": "Riachuelo",
+        "role": "Desarrollador Full Stack Semi Senior",
+        "period": "2021.1 – 2022.1",
+        "highlights": [
+          "Creación del design system GENOS garantizando consistencia visual",
+          "Pipelines de deploy y foco en accesibilidad para móvil"
+        ]
+      },
+      {
+        "company": "123Milhas",
+        "role": "Desarrollador Full Stack Semi Senior",
+        "period": "2020 – 2021.1",
+        "highlights": [
+          "Micro front-ends (Single-SPA) en React Native para escala",
+          "APIs en Node.js optimizadas para volumen y resiliencia"
+        ]
+      },
+      {
+        "company": "IBM",
+        "role": "Desarrollador Full Stack Junior",
+        "period": "2020 – 2021.1",
+        "highlights": ["Sitio IBM Brasil en ReactJS + Node.js con foco en rendimiento"]
+      },
+      {
+        "company": "HP",
+        "role": "Pasante en React Native",
+        "period": "06/2018 – 11/2019",
+        "highlights": ["Implementación, estilización y corrección de bugs en apps móviles"]
+      }
+    ]
+  },
+  "education": {
+    "title": "Formación Académica",
+    "items": [
+      {
+        "course": "Licenciatura en Matemática Computacional",
+        "place": "Universidad Federal de Ceará (UFC)",
+        "notes": "Mención Honrosa Maratón de Programación (2019)"
+      },
+      {
+        "course": "Enseñanza Media",
+        "place": "Organización Educacional Farias Brito",
+        "notes": "Medalla de Oro Olimpiada Canguro de Matemática; Menciones en Física y Robótica"
+      }
+    ]
+  },
+  "hobbies": {
+    "title": "Hobbies e Intereses",
+    "items": [
+      { "name": "Deportes" },
+      { "name": "Videojuegos" },
+      { "name": "Películas" },
+      { "name": "Series" },
+      { "name": "Literatura de ficción" }
+    ]
+  },
+  "contact": {
+    "title": "¡Contáctame!",
+    "subtitle": "Elige la mejor forma de contactarme",
+    "email": "Correo",
+    "sendEmail": "Enviar correo",
+    "emailAria": "Enviar correo a Caio Emanuel",
+    "whatsapp": "WhatsApp",
+    "whatsappAction": "Chatear por WhatsApp",
+    "whatsappAria": "Abrir chat en WhatsApp",
+    "linkedin": "LinkedIn",
+    "linkedinAction": "Visitar perfil",
+    "linkedinAria": "Visitar perfil en LinkedIn",
+    "footerRights": "© 2024 Caio Emanuel. Todos los derechos reservados."
+  },
+  "common": {
+    "mobilePreviewOn": "Volver a vista desktop",
+    "mobilePreviewOff": "Ver en modo móvil",
+    "mobilePreviewTitleOn": "Volver a desktop",
+    "mobilePreviewTitleOff": "Ver móvil",
+    "selectLanguage": "Seleccionar idioma"
+  }
+}

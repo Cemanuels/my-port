@@ -1,0 +1,180 @@
+{
+  "nav": {
+    "logo": "Caio Emanuel",
+    "goToHome": "Go to home",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "contact": "Contact",
+    "ariaNav": "Main navigation"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "subtitle": "Senior Software Engineer",
+    "description": "Specialist in the JavaScript ecosystem building scalable products in fintech, e-commerce and AI. Strong in cloud-native architectures, micro front-ends and CI/CD pipelines.",
+    "hireMe": "Hire me",
+    "letsTalk": "Let's talk",
+    "goToContact": "Go to contact section",
+    "emailAria": "Send email to Caio Emanuel",
+    "linkedinAria": "Caio Emanuel's LinkedIn",
+    "githubAria": "Caio Emanuel's GitHub",
+    "imageAlt": "Caio Emanuel - Senior Software Engineer"
+  },
+  "about": {
+    "title": "About Me",
+    "paragraph1": "With over 7 years of experience in full stack and mobile development, I work on building scalable applications in fintech, e-commerce and AI. Specialist in the JavaScript ecosystem, cloud-native architectures, CI/CD and design systems.",
+    "paragraph2": "My passion is turning complex ideas into elegant, scalable solutions, always prioritizing code quality, performance and user experience.",
+    "statYears": "Years of Experience",
+    "statProjects": "Projects Delivered",
+    "statTech": "Technologies Mastered"
+  },
+  "skills": {
+    "title": "My Skills",
+    "codingCategory": "Coding Skills",
+    "professionalCategory": "Professional Skills",
+    "levels": {
+      "beginner": "beginner",
+      "intermediate": "intermediate",
+      "advanced": "advanced"
+    },
+    "codingSkills": [
+      { "name": "JavaScript", "levelKey": "advanced" },
+      { "name": "TypeScript", "levelKey": "advanced" },
+      { "name": "React/Next.js", "levelKey": "advanced" },
+      { "name": "React Native", "levelKey": "advanced" },
+      { "name": "Node.js/NestJS", "levelKey": "advanced" },
+      { "name": "Python", "levelKey": "intermediate" },
+      { "name": "Java", "levelKey": "intermediate" }
+    ],
+    "professionalSkills": [
+      { "name": "Cloud Architecture", "levelKey": "advanced" },
+      { "name": "Micro Front-ends", "levelKey": "advanced" },
+      { "name": "CI/CD Pipelines", "levelKey": "advanced" },
+      { "name": "Design Systems", "levelKey": "advanced" }
+    ],
+    "cards": [
+      {
+        "title": "Languages & Frameworks",
+        "items": "JavaScript · TypeScript · ReactJS · NextJS · React Native · AngularJS · NodeJS · NestJS · Python"
+      },
+      {
+        "title": "Cloud & DevOps",
+        "items": "AWS · Azure · Docker · Kubernetes · OpenShift · CI/CD (GitHub Actions, GitLab CI, Azure DevOps, Bamboo)"
+      },
+      {
+        "title": "Architecture & Observability",
+        "items": "Micro front-ends (Single-SPA) · Kafka · RabbitMQ · Prometheus · Grafana · Design Systems"
+      },
+      {
+        "title": "Databases",
+        "items": "PostgreSQL · MongoDB · DynamoDB · SQL"
+      }
+    ]
+  },
+  "experience": {
+    "title": "My Journey",
+    "experienceCategory": "Experience",
+    "educationCategory": "Education",
+    "items": [
+      {
+        "company": "Fiserv (LATAM)",
+        "role": "Senior Full Stack Developer",
+        "period": "2024.1 – Present",
+        "highlights": [
+          "Development of AngularJS front-end interfaces for AI-based chat and management platform",
+          "Development of Java Spring Boot back-end services for API creation following BFF (Backend for Frontend) architecture",
+          "Development of Python back-end services using Azure Functions for AI APIs based on LLMs and vector processing",
+          "Contributing to scalable and cloud-native solutions using Microsoft Azure"
+        ]
+      },
+      {
+        "company": "Coterie (Canada)",
+        "role": "Senior Full Stack Developer",
+        "period": "2022.1 – 2024.1",
+        "highlights": [
+          "Development and maintenance of ReactJS front-end applications with focus on performance and scalability",
+          "Definition and implementation of back-end architecture using NestJS, including authentication (Auth0), WebSockets (Socket.IO) and unit tests with Jest",
+          "Management of AWS infrastructure for development and production environments, including DynamoDB and CloudSearch",
+          "Integration of AI solutions (ChatGPT) to improve search and sports venue recommendations based on user feedback"
+        ]
+      },
+      {
+        "company": "Riachuelo",
+        "role": "Mid-level Full Stack Developer",
+        "period": "2021.1 – 2022.1",
+        "highlights": [
+          "Creation of GENOS design system ensuring visual consistency",
+          "Deploy pipelines and focus on mobile accessibility"
+        ]
+      },
+      {
+        "company": "123Milhas",
+        "role": "Mid-level Full Stack Developer",
+        "period": "2020 – 2021.1",
+        "highlights": [
+          "Micro front-ends (Single-SPA) in React Native for scale",
+          "Node.js APIs optimized for volume and resilience"
+        ]
+      },
+      {
+        "company": "IBM",
+        "role": "Junior Full Stack Developer",
+        "period": "2020 – 2021.1",
+        "highlights": ["IBM Brazil website in ReactJS + Node.js with focus on performance"]
+      },
+      {
+        "company": "HP",
+        "role": "React Native Intern",
+        "period": "06/2018 – 11/2019",
+        "highlights": ["Implementation, styling and bug fixing in mobile apps"]
+      }
+    ]
+  },
+  "education": {
+    "title": "Academic Background",
+    "items": [
+      {
+        "course": "Bachelor's degree in Computational Mathematics",
+        "place": "Federal University of Ceará (UFC)",
+        "notes": "Honorable Mention Programming Marathon (2019)"
+      },
+      {
+        "course": "High School",
+        "place": "Organização Educacional Farias Brito",
+        "notes": "Gold Medal Kangaroo Mathematics Olympiad; Mentions in Physics and Robotics"
+      }
+    ]
+  },
+  "hobbies": {
+    "title": "Hobbies & Interests",
+    "items": [
+      { "name": "Sports" },
+      { "name": "Video games" },
+      { "name": "Movies" },
+      { "name": "TV series" },
+      { "name": "Fiction literature" }
+    ]
+  },
+  "contact": {
+    "title": "Get in Touch!",
+    "subtitle": "Choose the best way to get in touch with me",
+    "email": "E-mail",
+    "sendEmail": "Send email",
+    "emailAria": "Send email to Caio Emanuel",
+    "whatsapp": "WhatsApp",
+    "whatsappAction": "Chat on WhatsApp",
+    "whatsappAria": "Open WhatsApp chat",
+    "linkedin": "LinkedIn",
+    "linkedinAction": "Visit profile",
+    "linkedinAria": "Visit LinkedIn profile",
+    "footerRights": "© 2024 Caio Emanuel. All rights reserved."
+  },
+  "common": {
+    "mobilePreviewOn": "Back to desktop view",
+    "mobilePreviewOff": "View in mobile mode",
+    "mobilePreviewTitleOn": "Back to desktop",
+    "mobilePreviewTitleOff": "View mobile",
+    "selectLanguage": "Select language"
+  }
+}

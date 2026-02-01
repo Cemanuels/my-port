@@ -25,163 +25,58 @@ import {
   Smartphone,
   Monitor,
 } from 'lucide-react'
-import type {
-  SkillWithLevel,
-  SkillCard,
-  ExperienceItem,
-  EducationItem,
-  HobbyItem,
-  SkillLevel,
-  SectionVisibility,
-} from './types'
+import type { LucideIcon } from 'lucide-react'
+import type { SectionVisibility } from './types'
+import type { SkillLevelKey } from './types'
+import { useI18n } from './contexts/useI18n'
+import { LanguageSwitcher } from './components/LanguageSwitcher'
 
 const profilePhoto = 'https://github.com/Cemanuels.png'
 
-const codingSkills: SkillWithLevel[] = [
-  { name: 'JavaScript', level: 'avançado', icon: Code },
-  { name: 'TypeScript', level: 'avançado', icon: Code },
-  { name: 'React/Next.js', level: 'avançado', icon: Code },
-  { name: 'React Native', level: 'avançado', icon: Code },
-  { name: 'Node.js/NestJS', level: 'avançado', icon: Code },
-  { name: 'Python', level: 'intermediário', icon: Code },
-  { name: 'Java', level: 'intermediário', icon: Code },
-]
-
-const professionalSkills: SkillWithLevel[] = [
-  { name: 'Arquitetura Cloud', level: 'avançado', icon: Cloud },
-  { name: 'Micro Front-ends', level: 'avançado', icon: Settings },
-  { name: 'CI/CD Pipelines', level: 'avançado', icon: Target },
-  { name: 'Design Systems', level: 'avançado', icon: Settings },
-]
-
-function getLevelPercentage(level: SkillLevel): number {
-  switch (level) {
-    case 'iniciante':
+function getLevelPercentage(levelKey: SkillLevelKey): number {
+  switch (levelKey) {
+    case 'beginner':
       return 33
-    case 'intermediário':
+    case 'intermediate':
       return 66
-    case 'avançado':
+    case 'advanced':
       return 100
     default:
       return 0
   }
 }
 
-function getLevelColor(level: SkillLevel): string {
-  switch (level) {
-    case 'iniciante':
+function getLevelColor(levelKey: SkillLevelKey): string {
+  switch (levelKey) {
+    case 'beginner':
       return 'var(--level-beginner)'
-    case 'intermediário':
+    case 'intermediate':
       return 'var(--level-intermediate)'
-    case 'avançado':
+    case 'advanced':
       return 'var(--level-advanced)'
     default:
       return 'var(--primary-cyan)'
   }
 }
 
-const skills: SkillCard[] = [
-  {
-    title: 'Linguagens & Frameworks',
-    items:
-      'JavaScript · TypeScript · ReactJS · NextJS · React Native · AngularJS · NodeJS · NestJS · Python',
-    icon: Code,
-  },
-  {
-    title: 'Cloud & DevOps',
-    items:
-      'AWS · Azure · Docker · Kubernetes · OpenShift · CI/CD (GitHub Actions, GitLab CI, Azure DevOps, Bamboo)',
-    icon: Cloud,
-  },
-  {
-    title: 'Arquitetura & Observabilidade',
-    items: 'Micro front-ends (Single-SPA) · Kafka · RabbitMQ · Prometheus · Grafana · Design Systems',
-    icon: Settings,
-  },
-  {
-    title: 'Bancos de Dados',
-    items: 'PostgreSQL · MongoDB · DynamoDB · SQL',
-    icon: Database,
-  },
+const codingSkillIcons: LucideIcon[] = [
+  Code,
+  Code,
+  Code,
+  Code,
+  Code,
+  Code,
+  Code,
 ]
 
-const experience: ExperienceItem[] = [
-  {
-    company: 'Fiserv (LATAM)',
-    role: 'Desenvolvedor Full Stack Sênior',
-    period: '2024.1 – Atual',
-    highlights: [
-      'Desenvolvimento de interfaces front-end em AngularJS para plataforma de chat e gerenciamento baseada em IA',
-      'Desenvolvimento de serviços back-end em Java Spring Boot para criação de API seguindo a arquitetura BFF (Backend for Frontend)',
-      'Desenvolvimento de serviços back-end em Python utilizando Azure Functions para criação de APIs de IA baseadas em LLMs e processamento vetorial',
-      'Contribuição para soluções escaláveis e cloud-native utilizando Microsoft Azure',
-    ],
-  },
-  {
-    company: 'Coterie (Canadá)',
-    role: 'Desenvolvedor Full Stack Sênior',
-    period: '2022.1 – 2024.1',
-    highlights: [
-      'Desenvolvimento e manutenção de aplicações front-end em ReactJScom foco em performance e escalabilidade',
-      'Definição e implementação de arquitetura back-end utilizando NestJS, incluindo autenticação (Auth0), WebSockets (Socket.IO) e testes unitários com Jest',
-      'Gestão da infraestrutura em AWS para ambientes de desenvolvimento e produção, incluindo DynamoDB e CloudSearch',
-      'Integração de soluções de IA (ChatGPT) para aprimoramento de mecanismos de busca e recomendações de locais esportivos com base no feedback dos usuários',
-    ],
-  },
-  {
-    company: 'Riachuelo',
-    role: 'Desenvolvedor Full Stack Pleno',
-    period: '2021.1 – 2022.1',
-    highlights: [
-      'Criação do design system GENOS garantindo consistência visual',
-      'Pipelines de deploy e foco em acessibilidade para mobile',
-    ],
-  },
-  {
-    company: '123Milhas',
-    role: 'Desenvolvedor Full Stack Pleno',
-    period: '2020 – 2021.1',
-    highlights: [
-      'Micro front-ends (Single-SPA) em React Native para escala',
-      'APIs em Node.js otimizadas para volume e resiliência',
-    ],
-  },
-  {
-    company: 'IBM',
-    role: 'Desenvolvedor Full Stack Júnior',
-    period: '2020 – 2021.1',
-    highlights: ['Site IBM Brasil em ReactJS + Node.js com foco em performance'],
-  },
-  {
-    company: 'HP',
-    role: 'Estagiário em React Native',
-    period: '06/2018 – 11/2019',
-    highlights: ['Implementação, estilização e correção de bugs em apps móveis'],
-  },
-]
+const professionalSkillIcons: LucideIcon[] = [Cloud, Settings, Target, Settings]
 
-const education: EducationItem[] = [
-  {
-    course: 'Graduação em Matemática Computacional',
-    place: 'Universidade Federal do Ceará (UFC)',
-    notes: 'Menção Honrosa Maratona de Programação (2019)',
-  },
-  {
-    course: 'Ensino Médio',
-    place: 'Organização Educacional Farias Brito',
-    notes: 'Medalha de Ouro Olimpíada Canguru de Matemática; Menções em Física e Robótica',
-  },
-]
+const skillCardIcons: LucideIcon[] = [Code, Cloud, Settings, Database]
 
-const hobbies: HobbyItem[] = [
-  { name: 'Esportes', icon: Dumbbell },
-  { name: 'Jogos virtuais', icon: Gamepad2 },
-  { name: 'Filmes', icon: Film },
-  { name: 'Séries', icon: Tv },
-  { name: 'Literatura de ficção', icon: BookOpen },
-]
+const hobbyIcons: LucideIcon[] = [Dumbbell, Gamepad2, Film, Tv, BookOpen]
 
 function App() {
+  const { t } = useI18n()
   const [isVisible, setIsVisible] = useState<SectionVisibility>({})
   const [isMobilePreview, setIsMobilePreview] = useState(false)
 
@@ -230,7 +125,7 @@ function App() {
   return (
     <div className={`page ${isMobilePreview ? 'mobile-preview' : ''}`}>
       <div className="bg-grid" />
-      <nav className="navbar" role="navigation" aria-label="Navegação principal">
+      <nav className="navbar" role="navigation" aria-label={t.nav.ariaNav}>
         <div className="navbar-content">
           <a
             href="#inicio"
@@ -239,61 +134,64 @@ function App() {
               scrollToSection('inicio')
             }}
             className="navbar-logo"
-            aria-label="Ir para o início"
+            aria-label={t.nav.goToHome}
           >
-            Caio Emanuel
+            {t.nav.logo}
           </a>
-          <div className="navbar-links">
-            <a
-              href="#sobre"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection('sobre')
-              }}
-            >
-              <User size={18} />
-              <span>Sobre</span>
-            </a>
-            <a
-              href="#skills"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection('skills')
-              }}
-            >
-              <Code size={18} />
-              <span>Skills</span>
-            </a>
-            <a
-              href="#experiencia"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection('experiencia')
-              }}
-            >
-              <Briefcase size={18} />
-              <span>Experiência</span>
-            </a>
-            <a
-              href="#formacao"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection('formacao')
-              }}
-            >
-              <GraduationCap size={18} />
-              <span>Formação</span>
-            </a>
-            <a
-              href="#contato"
-              onClick={(e) => {
-                e.preventDefault()
-                scrollToSection('contato')
-              }}
-            >
-              <Mail size={18} />
-              <span>Contato</span>
-            </a>
+          <div className="navbar-right">
+            <div className="navbar-links">
+              <a
+                href="#sobre"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection('sobre')
+                }}
+              >
+                <User size={18} />
+                <span>{t.nav.about}</span>
+              </a>
+              <a
+                href="#skills"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection('skills')
+                }}
+              >
+                <Code size={18} />
+                <span>{t.nav.skills}</span>
+              </a>
+              <a
+                href="#experiencia"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection('experiencia')
+                }}
+              >
+                <Briefcase size={18} />
+                <span>{t.nav.experience}</span>
+              </a>
+              <a
+                href="#formacao"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection('formacao')
+                }}
+              >
+                <GraduationCap size={18} />
+                <span>{t.nav.education}</span>
+              </a>
+              <a
+                href="#contato"
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection('contato')
+                }}
+              >
+                <Mail size={18} />
+                <span>{t.nav.contact}</span>
+              </a>
+            </div>
+            <LanguageSwitcher />
           </div>
         </div>
       </nav>
@@ -301,25 +199,21 @@ function App() {
       <header id="inicio" className="hero">
         <div className="hero-content">
           <div className="hero-text">
-            <div className="hero-greeting">Olá, eu sou</div>
+            <div className="hero-greeting">{t.hero.greeting}</div>
             <h1 className="hero-title">
               <span className="title-line">Caio</span>
               <span className="title-line">Emanuel</span>
             </h1>
-            <p className="hero-subtitle">Engenheiro de Software Sênior</p>
-            <p className="hero-description">
-              Especialista em ecossistema JavaScript construindo produtos escaláveis em fintech,
-              e-commerce e IA. Forte em arquiteturas cloud-native, micro front-ends e esteiras
-              CI/CD.
-            </p>
+            <p className="hero-subtitle">{t.hero.subtitle}</p>
+            <p className="hero-description">{t.hero.description}</p>
             <div className="hero-actions">
               <a
                 className="button primary"
                 href="mailto:c.emanuel_ufc@outook.com"
-                aria-label="Enviar e-mail para Caio Emanuel"
+                aria-label={t.hero.emailAria}
               >
                 <Briefcase size={20} />
-                <span>Contrate-me</span>
+                <span>{t.hero.hireMe}</span>
               </a>
               <a
                 className="button secondary"
@@ -328,10 +222,10 @@ function App() {
                   e.preventDefault()
                   scrollToSection('contato')
                 }}
-                aria-label="Ir para seção de contato"
+                aria-label={t.hero.goToContact}
               >
                 <MessageCircle size={20} />
-                <span>Vamos conversar</span>
+                <span>{t.hero.letsTalk}</span>
               </a>
             </div>
             <div className="hero-social">
@@ -340,7 +234,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 className="social-link"
-                aria-label="LinkedIn de Caio Emanuel"
+                aria-label={t.hero.linkedinAria}
               >
                 <Linkedin size={20} />
               </a>
@@ -349,7 +243,7 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 className="social-link"
-                aria-label="GitHub de Caio Emanuel"
+                aria-label={t.hero.githubAria}
               >
                 <Github size={20} />
               </a>
@@ -357,7 +251,7 @@ function App() {
           </div>
           <div className="hero-image">
             <div className="image-wrapper">
-              <img src={profilePhoto} alt="Caio Emanuel - Engenheiro de Software" />
+              <img src={profilePhoto} alt={t.hero.imageAlt} />
               <div className="glow-lines">
                 <div className="glow-line line-1"></div>
                 <div className="glow-line line-2"></div>
@@ -373,35 +267,27 @@ function App() {
         className={`section about-section ${isVisible.sobre ? 'visible' : ''}`}
       >
         <div className="section-header">
-          <h2 className="section-title">Sobre Mim</h2>
+          <h2 className="section-title">{t.about.title}</h2>
         </div>
         <div className="about-content">
           <div className="about-text">
-            <p>
-              Com mais de 7 anos de experiência em desenvolvimento full stack e mobile, atuo na
-              construção de aplicações escaláveis nos setores de fintech, e-commerce e IA.
-              Especialista em ecossistema JavaScript, arquiteturas cloud-native, CI/CD e design
-              systems.
-            </p>
-            <p>
-              Minha paixão está em transformar ideias complexas em soluções elegantes e escaláveis,
-              sempre priorizando qualidade de código, performance e experiência do usuário.
-            </p>
+            <p>{t.about.paragraph1}</p>
+            <p>{t.about.paragraph2}</p>
             <div className="about-stats">
               <div className="stat-item">
                 <TrendingUp size={32} className="stat-icon" />
                 <span className="stat-number">7+</span>
-                <span className="stat-label">Anos de Experiência</span>
+                <span className="stat-label">{t.about.statYears}</span>
               </div>
               <div className="stat-item">
                 <Target size={32} className="stat-icon" />
                 <span className="stat-number">50+</span>
-                <span className="stat-label">Projetos Entregues</span>
+                <span className="stat-label">{t.about.statProjects}</span>
               </div>
               <div className="stat-item">
                 <Code size={32} className="stat-icon" />
                 <span className="stat-number">15+</span>
-                <span className="stat-label">Tecnologias Dominadas</span>
+                <span className="stat-label">{t.about.statTech}</span>
               </div>
             </div>
           </div>
@@ -413,16 +299,18 @@ function App() {
         className={`section skills-section ${isVisible.skills ? 'visible' : ''}`}
       >
         <div className="section-header">
-          <h2 className="section-title">Minhas Skills</h2>
+          <h2 className="section-title">{t.skills.title}</h2>
         </div>
         <div className="skills-container">
           <div className="skills-column">
-            <h3 className="skills-category">Coding Skills</h3>
+            <h3 className="skills-category">{t.skills.codingCategory}</h3>
             <div className="skills-list">
-              {codingSkills.map((skill) => {
-                const Icon = skill.icon
-                const percentage = getLevelPercentage(skill.level)
-                const levelColor = getLevelColor(skill.level)
+              {t.skills.codingSkills.map((skill, index) => {
+                const Icon = codingSkillIcons[index] ?? Code
+                const levelKey = skill.levelKey as SkillLevelKey
+                const percentage = getLevelPercentage(levelKey)
+                const levelColor = getLevelColor(levelKey)
+                const levelLabel = t.skills.levels[levelKey]
                 return (
                   <div key={skill.name} className="skill-item">
                     <div className="skill-header">
@@ -430,8 +318,10 @@ function App() {
                         <Icon size={18} className="skill-icon" />
                         <span className="skill-name">{skill.name}</span>
                       </div>
-                      <span className={`skill-level skill-level-${skill.level}`}>
-                        {skill.level}
+                      <span
+                        className={`skill-level skill-level-${skill.levelKey}`}
+                      >
+                        {levelLabel}
                       </span>
                     </div>
                     <div className="skill-bar">
@@ -441,7 +331,7 @@ function App() {
                           width: `${percentage}%`,
                           backgroundColor: levelColor,
                         }}
-                        aria-label={`${skill.name}: ${skill.level}`}
+                        aria-label={`${skill.name}: ${levelLabel}`}
                         role="progressbar"
                         aria-valuenow={percentage}
                         aria-valuemin={0}
@@ -454,12 +344,16 @@ function App() {
             </div>
           </div>
           <div className="skills-column">
-            <h3 className="skills-category">Professional Skills</h3>
+            <h3 className="skills-category">
+              {t.skills.professionalCategory}
+            </h3>
             <div className="skills-list">
-              {professionalSkills.map((skill) => {
-                const Icon = skill.icon
-                const percentage = getLevelPercentage(skill.level)
-                const levelColor = getLevelColor(skill.level)
+              {t.skills.professionalSkills.map((skill, index) => {
+                const Icon = professionalSkillIcons[index] ?? Settings
+                const levelKey = skill.levelKey as SkillLevelKey
+                const percentage = getLevelPercentage(levelKey)
+                const levelColor = getLevelColor(levelKey)
+                const levelLabel = t.skills.levels[levelKey]
                 return (
                   <div key={skill.name} className="skill-item">
                     <div className="skill-header">
@@ -467,8 +361,10 @@ function App() {
                         <Icon size={18} className="skill-icon" />
                         <span className="skill-name">{skill.name}</span>
                       </div>
-                      <span className={`skill-level skill-level-${skill.level}`}>
-                        {skill.level}
+                      <span
+                        className={`skill-level skill-level-${skill.levelKey}`}
+                      >
+                        {levelLabel}
                       </span>
                     </div>
                     <div className="skill-bar">
@@ -478,7 +374,7 @@ function App() {
                           width: `${percentage}%`,
                           backgroundColor: levelColor,
                         }}
-                        aria-label={`${skill.name}: ${skill.level}`}
+                        aria-label={`${skill.name}: ${levelLabel}`}
                         role="progressbar"
                         aria-valuenow={percentage}
                         aria-valuemin={0}
@@ -492,15 +388,15 @@ function App() {
           </div>
         </div>
         <div className="skills-grid">
-          {skills.map((skill) => {
-            const Icon = skill.icon
+          {t.skills.cards.map((card, index) => {
+            const Icon = skillCardIcons[index] ?? Code
             return (
-              <div key={skill.title} className="skill-card">
+              <div key={card.title} className="skill-card">
                 <div className="skill-card-header">
                   <Icon size={24} className="skill-card-icon" />
-                  <h3>{skill.title}</h3>
+                  <h3>{card.title}</h3>
                 </div>
-                <p>{skill.items}</p>
+                <p>{card.items}</p>
               </div>
             )
           })}
@@ -512,13 +408,15 @@ function App() {
         className={`section experience-section ${isVisible.experiencia ? 'visible' : ''}`}
       >
         <div className="section-header">
-          <h2 className="section-title">Minha Jornada</h2>
+          <h2 className="section-title">{t.experience.title}</h2>
         </div>
         <div className="journey-container">
           <div className="journey-column">
-            <h3 className="journey-category">Experiência</h3>
+            <h3 className="journey-category">
+              {t.experience.experienceCategory}
+            </h3>
             <div className="journey-list">
-              {experience.map((item) => (
+              {t.experience.items.map((item) => (
                 <div key={item.company} className="journey-item">
                   <div className="journey-date">
                     <Calendar size={16} />
@@ -547,9 +445,11 @@ function App() {
             </div>
           </div>
           <div className="journey-column">
-            <h3 className="journey-category">Educação</h3>
+            <h3 className="journey-category">
+              {t.experience.educationCategory}
+            </h3>
             <div className="journey-list">
-              {education.map((item) => (
+              {t.education.items.map((item) => (
                 <div key={item.course} className="journey-item">
                   <div className="journey-content">
                     <h4>
@@ -577,10 +477,10 @@ function App() {
         className={`section education-section ${isVisible.formacao ? 'visible' : ''}`}
       >
         <div className="section-header">
-          <h2 className="section-title">Formação Acadêmica</h2>
+          <h2 className="section-title">{t.education.title}</h2>
         </div>
         <div className="education-grid">
-          {education.map((item) => (
+          {t.education.items.map((item) => (
             <div key={item.course} className="education-card">
               <GraduationCap size={40} className="education-icon" />
               <h3>{item.course}</h3>
@@ -602,11 +502,11 @@ function App() {
         className={`section hobbies-section ${isVisible.hobbies ? 'visible' : ''}`}
       >
         <div className="section-header">
-          <h2 className="section-title">Hobbies & Interesses</h2>
+          <h2 className="section-title">{t.hobbies.title}</h2>
         </div>
         <div className="hobbies-grid">
-          {hobbies.map((hobby) => {
-            const Icon = hobby.icon
+          {t.hobbies.items.map((hobby, index) => {
+            const Icon = hobbyIcons[index] ?? Film
             return (
               <div key={hobby.name} className="hobby-card">
                 <Icon size={32} className="hobby-icon" />
@@ -619,21 +519,21 @@ function App() {
 
       <footer id="contato" className={`footer ${isVisible.contato ? 'visible' : ''}`}>
         <div className="section-header">
-          <h2 className="section-title">Entre em Contato!</h2>
-          <p className="muted">Escolha a melhor forma de entrar em contato comigo</p>
+          <h2 className="section-title">{t.contact.title}</h2>
+          <p className="muted">{t.contact.subtitle}</p>
         </div>
         <div className="contact-cards">
           <a
             href="mailto:c.emanuel_ufc@outlook.com"
             className="contact-card"
-            aria-label="Enviar e-mail para Caio Emanuel"
+            aria-label={t.contact.emailAria}
           >
             <div className="contact-icon email">
               <Mail size={32} />
             </div>
-            <h3>E-mail</h3>
+            <h3>{t.contact.email}</h3>
             <p>c.emanuel_ufc@outlook.com</p>
-            <span className="contact-action">Enviar e-mail</span>
+            <span className="contact-action">{t.contact.sendEmail}</span>
           </a>
 
           <a
@@ -641,14 +541,14 @@ function App() {
             target="_blank"
             rel="noreferrer"
             className="contact-card"
-            aria-label="Abrir conversa no WhatsApp"
+            aria-label={t.contact.whatsappAria}
           >
             <div className="contact-icon whatsapp">
               <MessageCircle size={32} />
             </div>
-            <h3>WhatsApp</h3>
+            <h3>{t.contact.whatsapp}</h3>
             <p>(85) 98511-2221</p>
-            <span className="contact-action">Conversar no WhatsApp</span>
+            <span className="contact-action">{t.contact.whatsappAction}</span>
           </a>
 
           <a
@@ -656,26 +556,32 @@ function App() {
             target="_blank"
             rel="noreferrer"
             className="contact-card"
-            aria-label="Visitar perfil no LinkedIn"
+            aria-label={t.contact.linkedinAria}
           >
             <div className="contact-icon linkedin">
               <Linkedin size={32} />
             </div>
-            <h3>LinkedIn</h3>
+            <h3>{t.contact.linkedin}</h3>
             <p>caio-emanuel</p>
-            <span className="contact-action">Visitar perfil</span>
+            <span className="contact-action">{t.contact.linkedinAction}</span>
           </a>
         </div>
         <div className="footer-info">
-          <p>© 2024 Caio Emanuel. Todos os direitos reservados.</p>
+          <p>{t.contact.footerRights}</p>
         </div>
       </footer>
 
       <button
         className="mobile-preview-toggle"
         onClick={toggleMobilePreview}
-        aria-label={isMobilePreview ? 'Voltar para visualização desktop' : 'Visualizar em modo mobile'}
-        title={isMobilePreview ? 'Voltar para desktop' : 'Visualizar mobile'}
+        aria-label={
+          isMobilePreview ? t.common.mobilePreviewOn : t.common.mobilePreviewOff
+        }
+        title={
+          isMobilePreview
+            ? t.common.mobilePreviewTitleOn
+            : t.common.mobilePreviewTitleOff
+        }
       >
         {isMobilePreview ? <Monitor size={20} /> : <Smartphone size={20} />}
       </button>
