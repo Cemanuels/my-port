@@ -25,28 +25,36 @@ import {
   Smartphone,
   Monitor,
 } from 'lucide-react'
+import type {
+  SkillWithLevel,
+  SkillCard,
+  ExperienceItem,
+  EducationItem,
+  HobbyItem,
+  SkillLevel,
+  SectionVisibility,
+} from './types'
 
 const profilePhoto = 'https://github.com/Cemanuels.png'
 
-const codingSkills = [
+const codingSkills: SkillWithLevel[] = [
   { name: 'JavaScript', level: 'avançado', icon: Code },
   { name: 'TypeScript', level: 'avançado', icon: Code },
   { name: 'React/Next.js', level: 'avançado', icon: Code },
   { name: 'React Native', level: 'avançado', icon: Code },
   { name: 'Node.js/NestJS', level: 'avançado', icon: Code },
   { name: 'Python', level: 'intermediário', icon: Code },
-  { name: 'Java', level: 'intermediário', icon: Code,}
+  { name: 'Java', level: 'intermediário', icon: Code },
 ]
 
-const professionalSkills = [
+const professionalSkills: SkillWithLevel[] = [
   { name: 'Arquitetura Cloud', level: 'avançado', icon: Cloud },
   { name: 'Micro Front-ends', level: 'avançado', icon: Settings },
   { name: 'CI/CD Pipelines', level: 'avançado', icon: Target },
   { name: 'Design Systems', level: 'avançado', icon: Settings },
 ]
 
-// Função helper para converter nível em percentual para a barra
-const getLevelPercentage = (level) => {
+function getLevelPercentage(level: SkillLevel): number {
   switch (level) {
     case 'iniciante':
       return 33
@@ -59,8 +67,7 @@ const getLevelPercentage = (level) => {
   }
 }
 
-// Função helper para obter a cor do nível
-const getLevelColor = (level) => {
+function getLevelColor(level: SkillLevel): string {
   switch (level) {
     case 'iniciante':
       return 'var(--level-beginner)'
@@ -73,7 +80,7 @@ const getLevelColor = (level) => {
   }
 }
 
-const skills = [
+const skills: SkillCard[] = [
   {
     title: 'Linguagens & Frameworks',
     items:
@@ -98,9 +105,9 @@ const skills = [
   },
 ]
 
-const experience = [
+const experience: ExperienceItem[] = [
   {
-    company: "Fiserv (LATAM)",
+    company: 'Fiserv (LATAM)',
     role: 'Desenvolvedor Full Stack Sênior',
     period: '2024.1 – Atual',
     highlights: [
@@ -153,7 +160,7 @@ const experience = [
   },
 ]
 
-const education = [
+const education: EducationItem[] = [
   {
     course: 'Graduação em Matemática Computacional',
     place: 'Universidade Federal do Ceará (UFC)',
@@ -166,7 +173,7 @@ const education = [
   },
 ]
 
-const hobbies = [
+const hobbies: HobbyItem[] = [
   { name: 'Esportes', icon: Dumbbell },
   { name: 'Jogos virtuais', icon: Gamepad2 },
   { name: 'Filmes', icon: Film },
@@ -175,10 +182,10 @@ const hobbies = [
 ]
 
 function App() {
-  const [isVisible, setIsVisible] = useState({})
+  const [isVisible, setIsVisible] = useState<SectionVisibility>({})
   const [isMobilePreview, setIsMobilePreview] = useState(false)
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string): void => {
     const element = document.getElementById(id)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -189,7 +196,7 @@ function App() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && entry.target.id) {
             setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }))
           }
         })
@@ -203,12 +210,10 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
-
-  const toggleMobilePreview = () => {
+  const toggleMobilePreview = (): void => {
     const newState = !isMobilePreview
     setIsMobilePreview(newState)
-    
-    // Adiciona/remove classe no body para controlar overlay
+
     if (newState) {
       document.body.classList.add('mobile-preview-active')
     } else {
@@ -216,7 +221,6 @@ function App() {
     }
   }
 
-  // Limpa a classe ao desmontar
   useEffect(() => {
     return () => {
       document.body.classList.remove('mobile-preview-active')
@@ -440,9 +444,9 @@ function App() {
                         aria-label={`${skill.name}: ${skill.level}`}
                         role="progressbar"
                         aria-valuenow={percentage}
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
                     </div>
                   </div>
                 )
@@ -477,9 +481,9 @@ function App() {
                         aria-label={`${skill.name}: ${skill.level}`}
                         role="progressbar"
                         aria-valuenow={percentage}
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      ></div>
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                      />
                     </div>
                   </div>
                 )
@@ -667,7 +671,6 @@ function App() {
         </div>
       </footer>
 
-      {/* Botão flutuante para visualização mobile */}
       <button
         className="mobile-preview-toggle"
         onClick={toggleMobilePreview}
